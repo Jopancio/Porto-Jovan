@@ -156,16 +156,20 @@
 })();
 
 // ── Clock ──
+const gmt7Formatter = new Intl.DateTimeFormat('en-US', {
+  timeZone: 'Asia/Jakarta',
+  hour: 'numeric',
+  minute: '2-digit',
+  second: '2-digit',
+  hour12: true
+});
+
 function updateClock() {
-  const now = new Date();
-  const gmt7 = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' }));
-  let h = gmt7.getHours();
-  const ampm = h >= 12 ? 'PM' : 'AM';
-  h = h % 12 || 12;
-  const m = String(gmt7.getMinutes()).padStart(2, '0');
-  const s = String(gmt7.getSeconds()).padStart(2, '0');
+  const parts = gmt7Formatter.formatToParts(new Date());
+  const values = Object.fromEntries(parts.map(part => [part.type, part.value]));
+
   document.getElementById('clock').textContent =
-    `${String(h).padStart(2, '0')}:${m}:${s} ${ampm} GMT+7`;
+    `${String(values.hour || '0').padStart(2, '0')}:${values.minute || '00'}:${values.second || '00'} ${values.dayPeriod || 'AM'} GMT+7`;
 }
 updateClock();
 setInterval(updateClock, 1000);
