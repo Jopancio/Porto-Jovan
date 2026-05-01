@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jovlab.xyz</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- Splash screen -->
+<div id="splash">
+  <div class="splash-stage">
+  <div class="splash-rail">
+    <span>secure tools</span>
+    <span>luau systems</span>
+    <span>reverse engineering</span>
+  </div>
+  <div class="splash-card" id="splash-card">
+    <span class="splash-corner tl"></span>
+    <span class="splash-corner tr"></span>
+    <span class="splash-corner bl"></span>
+    <span class="splash-corner br"></span>
+    <div class="splash-content">
+      <div class="splash-eyebrow" id="splash-eyebrow">🤪</div>
+      <div class="splash-brand-row">
+        <div id="splash-title">Jovlab.xyz</div>
+      </div>
+      <p id="splash-sub">security-minded tools, luau systems, and clean interfaces built with intent.</p>
+      <div class="splash-loader">
+        <div id="splash-pulse"></div>
+        <div class="splash-loader-track"><span></span></div>
+        <strong>press anywhere</strong>
+      </div>
+    </div>
+
+    <div class="splash-side">
+      <div class="splash-presence">
+        <div class="splash-presence-avatar">
+          <img id="splash-lanyard-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' fill='%23151515'/%3E%3Ccircle cx='64' cy='50' r='24' fill='%235865f2'/%3E%3Cpath d='M22 118c8-28 25-42 42-42s34 14 42 42' fill='%2371f2a2'/%3E%3C/svg%3E" alt="Discord avatar">
+          <span class="presence-dot idle" id="splash-lanyard-dot"></span>
+        </div>
+        <div class="splash-presence-copy">
+          <span>discord presence</span>
+          <strong id="splash-lanyard-status">connecting</strong>
+          <p id="splash-lanyard-activity">checking live status...</p>
+        </div>
+      </div>
+      <div class="splash-scan">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="splash-side-grid">
+        <div>
+          <span>focus</span>
+          <strong>security</strong>
+        </div>
+        <div>
+          <span>stack</span>
+          <strong>luau</strong>
+        </div>
+        <div>
+          <span>mode</span>
+          <strong>building</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="splash-meta" id="splash-meta">
+    <span>jovlab protocol</span>
+    <span>portfolio access</span>
+    <span>click to enter</span>
+  </div>
+  </div>
+</div>
+
+<!-- Main wrapper -->
+<div id="main-wrapper">
+
+<!-- Custom context menu -->
+<div id="ctx-menu">
+  <div class="ctx-item" id="ctx-copy">
+    <svg viewBox="0 0 24 24"><path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+    Copy
+  </div>
+  <div class="ctx-divider"></div>
+  <div class="ctx-item" id="ctx-paste">
+    <svg viewBox="0 0 24 24"><path d="M19 2h-4.18C14.4.84 13.3 0 12 0S9.6.84 9.18 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18H5V4h2v3h10V4h2v16z"/></svg>
+    Paste
+  </div>
+</div>
+
+<!-- Top bar -->
+<div class="top-bar">
+  <div class="avatar">
+    <svg viewBox="0 0 36 36" width="36" height="36">
+      <defs>
+        <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#444"/>
+          <stop offset="100%" style="stop-color:#666"/>
+        </linearGradient>
+      </defs>
+      <circle cx="18" cy="18" r="18" fill="url(#avatarGrad)"/>
+      <circle cx="18" cy="14" r="6" fill="#888"/>
+      <ellipse cx="18" cy="30" rx="10" ry="8" fill="#888"/>
+    </svg>
+  </div>
+  <span class="username">jovlab.xyz</span>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="views">
+    <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+    <span>3,461 VIEWS</span>
+  </div>
+
+  <div class="local-time">
+    LOCAL TIME &middot; <span id="clock">--:--:-- --</span>
+  </div>
+
+  <h1 class="hero-heading">
+    hellow, i'm jovan <span class="heart">💜</span>
+  </h1>
+
+  <div class="role-line">
+    i am <span class="role-badge" id="role-badge">a security enthusiast</span>
+  </div>
+
+  <div class="description">
+    <span id="typed-text"></span><span class="typing-cursor"></span>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="about-shell">
+    <div class="about-hero">
+      <div>
+        <div class="about-kicker">jovlab / profile</div>
+        <h2 class="about-title">hellow, i'm jovan <span>i build things that stay sharp.</span></h2>
+        <p class="about-lead">i'm a luau developer, security enthusiast, and reverse engineering learner focused on custom tools, anti-tamper ideas, authentication systems, and clean web experiences. i like projects that feel useful, fast, and a little mysterious.</p>
+        <div class="about-actions">
+          <span class="about-pill"><span class="about-status-dot"></span> currently building secure tools</span>
+          <a class="about-pill" href="#">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            github
+          </a>
+          <span class="about-pill">jovlab.xyz</span>
+        </div>
+      </div>
+
+      <div class="about-terminal">
+        <div class="terminal-bar">
+          <span class="terminal-light"></span>
+          <span class="terminal-light"></span>
+          <span class="terminal-light"></span>
+          <span class="terminal-label">jovan.exe</span>
+        </div>
+        <div class="terminal-body" id="about-terminal-body">
+          <span class="terminal-line" data-terminal-line><span class="prompt">$</span> <span data-type-text>whoami</span></span>
+          <span class="terminal-line" data-terminal-line><strong data-type-text>jovan</strong><span data-type-text> / developer / researcher</span></span>
+          <span class="terminal-line" data-terminal-line><span class="prompt">$</span> <span data-type-text>focus --now</span></span>
+          <span class="terminal-line" data-terminal-line><span data-type-text>security tools, luau systems, web interfaces</span></span>
+          <span class="terminal-line" data-terminal-line><span class="prompt">$</span> <span data-type-text>vibe</span></span>
+          <span class="terminal-line" data-terminal-line><span data-type-text>quiet UI, sharp details, code that feels intentional</span><span class="terminal-caret"></span></span>
+
+          <div class="terminal-grid">
+            <div class="terminal-chip">anti-tamper</div>
+            <div class="terminal-chip">auth flows</div>
+            <div class="terminal-chip">reverse engineering</div>
+            <div class="terminal-chip">tooling</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-stats">
+      <div class="about-stat">
+        <strong>4+</strong>
+        <span>years writing and refining code</span>
+      </div>
+      <div class="about-stat">
+        <strong>Luau</strong>
+        <span>main language for systems and scripts</span>
+      </div>
+      <div class="about-stat">
+        <strong>Security</strong>
+        <span>core theme across the work</span>
+      </div>
+    </div>
+
+    <div class="about-lower">
+      <div class="about-panel">
+        <h3>What I Do</h3>
+        <div class="focus-list">
+          <div class="focus-item">
+            <div class="focus-number">01</div>
+            <div>
+              <h4>Security &amp; Scripting</h4>
+              <p>building anti-tamper logic, whitelist platforms, and secure script distribution systems.</p>
+            </div>
+          </div>
+          <div class="focus-item">
+            <div class="focus-number">02</div>
+            <div>
+              <h4>Luau Development</h4>
+              <p>writing clean, practical code for tools, automation, and production-style scripting workflows.</p>
+            </div>
+          </div>
+          <div class="focus-item">
+            <div class="focus-number">03</div>
+            <div>
+              <h4>Reverse Engineering</h4>
+              <p>studying how systems break, then using that knowledge to build better defenses.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-panel">
+        <h3>Stack</h3>
+        <div class="skill-cloud">
+          <div class="skill-tag"><span class="skill-dot" style="background:#e76f00"></span> Luau</div>
+          <div class="skill-tag"><span class="skill-dot" style="background:#f16529"></span> HTML</div>
+          <div class="skill-tag"><span class="skill-dot" style="background:#264de4"></span> CSS</div>
+          <div class="skill-tag"><span class="skill-dot" style="background:#f7df1e"></span> JavaScript</div>
+          <div class="skill-tag"><span class="skill-dot" style="background:#3178c6"></span> TypeScript</div>
+          <div class="skill-tag"><span class="skill-dot" style="background:#3776ab"></span> Python</div>
+          <div class="skill-tag"><span class="skill-dot" style="background:#61dafb"></span> React</div>
+          <div class="skill-tag"><span class="skill-dot" style="background:#68a063"></span> Node.js</div>
+          <div class="skill-tag"><span class="skill-dot" style="background:#00684a"></span> MongoDB</div>
+          <div class="skill-tag"><span class="skill-dot" style="background:#f34f29"></span> Git</div>
+          <div class="skill-tag"><span class="skill-dot" style="background:#ccc"></span> GitHub</div>
+        </div>
+      </div>
+
+      <div class="about-panel presence-panel">
+        <div class="presence-top">
+          <div class="presence-avatar">
+            <img id="lanyard-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' fill='%23151515'/%3E%3Ccircle cx='64' cy='50' r='24' fill='%235865f2'/%3E%3Cpath d='M22 118c8-28 25-42 42-42s34 14 42 42' fill='%2371f2a2'/%3E%3C/svg%3E" alt="Discord avatar">
+            <span class="presence-dot idle" id="lanyard-status-dot"></span>
+          </div>
+          <div class="presence-identity">
+            <div class="presence-label">Discord profile</div>
+            <h3 id="lanyard-username">jovan</h3>
+            <p id="lanyard-handle">@jovlab.xyz</p>
+          </div>
+          <div class="presence-state" id="lanyard-status-text">connecting</div>
+        </div>
+
+        <div class="presence-activities">
+          <div class="presence-activity" id="lanyard-activity-1">
+            <div class="presence-icon" id="lanyard-act-icon-1"></div>
+            <div class="presence-copy">
+              <strong id="lanyard-act-name-1">connecting to Lanyard...</strong>
+              <span id="lanyard-act-detail-1a"></span>
+              <span id="lanyard-act-detail-1b"></span>
+            </div>
+            <div class="presence-time" id="lanyard-act-elapsed-1"></div>
+          </div>
+
+          <div class="presence-activity" id="lanyard-activity-2" style="display:none;">
+            <div class="presence-icon" id="lanyard-act-icon-2"></div>
+            <div class="presence-copy">
+              <strong id="lanyard-act-name-2"></strong>
+              <span id="lanyard-act-detail-2a"></span>
+              <span id="lanyard-act-detail-2b"></span>
+            </div>
+            <div class="presence-time" id="lanyard-act-elapsed-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="dc-layout">
+
+  <!-- LEFT: Profile card -->
+  <div class="dc-profile">
+    <div class="dc-banner">
+      <div class="dc-avatar-wrap">
+        <div class="dc-avatar">
+          <svg viewBox="0 0 72 72">
+            <defs><linearGradient id="avGrad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#555"/><stop offset="100%" style="stop-color:#888"/></linearGradient></defs>
+            <circle cx="36" cy="36" r="36" fill="url(#avGrad2)"/>
+            <circle cx="36" cy="28" r="10" fill="#aaa"/>
+            <ellipse cx="36" cy="56" rx="16" ry="12" fill="#aaa"/>
+          </svg>
+          <div class="dc-avatar-status idle" id="dc-avatar-dot"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dc-profile-body">
+      <div class="dc-username">
+        jovan <span class="dc-badge">DEV</span>
+      </div>
+      <div class="dc-handle">jovlab.xyz</div>
+
+      <div class="dc-section-title">About Me</div>
+      <div class="dc-bio-card">
+        <div class="dc-bio-line">🛡️ Security Researcher & Reverse Engineer</div>
+        <div class="dc-bio-line">💻 Luau Developer</div>
+        <div class="dc-bio-line">🔗 <a href="#">jovlab.xyz</a></div>
+      </div>
+
+      <div class="dc-divider"></div>
+
+      <div class="dc-section-title">Connections</div>
+      <div class="dc-connection">
+        <div class="dc-conn-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        </div>
+        <div class="dc-conn-info">
+          <div class="dc-conn-name">GitHub</div>
+          <div class="dc-conn-type">github.com</div>
+        </div>
+        <svg class="dc-conn-verified" viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5zm-1 14.59l-3.3-3.3 1.41-1.41L11 13.77l5.89-5.89 1.41 1.41L11 16.59z"/></svg>
+      </div>
+
+      <div class="dc-divider"></div>
+
+      <div class="dc-section-title">Activities</div>
+      <div class="dc-activity" id="dc-activity-1">
+        <div class="dc-act-icon" id="dc-act-icon-1">
+          <svg viewBox="0 0 100 100"><path d="M8.7 90L0 81.3l33-33L0 15.5 8.7 6.8 50.4 48.6zm41.6 0V81h41.7v9H50.3z"/></svg>
+        </div>
+        <div class="dc-act-info">
+          <div class="dc-act-name" id="dc-act-name-1">connecting...</div>
+          <div class="dc-act-detail" id="dc-act-detail-1a"></div>
+          <div class="dc-act-detail" id="dc-act-detail-1b"></div>
+        </div>
+        <div class="dc-act-elapsed" id="dc-act-elapsed-1"></div>
+      </div>
+      <div class="dc-activity" id="dc-activity-2" style="display:none;">
+        <div class="dc-act-icon" id="dc-act-icon-2"></div>
+        <div class="dc-act-info">
+          <div class="dc-act-name" id="dc-act-name-2"></div>
+          <div class="dc-act-detail" id="dc-act-detail-2a"></div>
+          <div class="dc-act-detail" id="dc-act-detail-2b"></div>
+        </div>
+        <div class="dc-act-elapsed" id="dc-act-elapsed-2"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: About & Skills -->
+  <div class="dc-right">
+    <div class="dc-card dc-about-card">
+      <div class="dc-about-top">
+        <div>
+          <div class="dc-card-title">About Me <span class="dc-card-tag">bio</span></div>
+          <p class="dc-about-lead">security researcher, reverse engineer, and luau developer focused on building systems that are useful, hard to break, and worth shipping.</p>
+        </div>
+        <div class="dc-about-status"><span class="dc-about-status-dot"></span>building secure tools</div>
+      </div>
+
+      <div class="dc-about-metrics">
+        <div class="dc-about-metric">
+          <strong>4+</strong>
+          <span>years coding</span>
+        </div>
+        <div class="dc-about-metric">
+          <strong>luau</strong>
+          <span>main stack</span>
+        </div>
+        <div class="dc-about-metric">
+          <strong>security</strong>
+          <span>core focus</span>
+        </div>
+      </div>
+
+      <div class="dc-about-grid">
+        <div class="dc-about-block">
+          <h4>Who I Am</h4>
+          <p>i have been writing code for close to four years, with most of that time centered on luau development, security projects, and solving practical problems with custom tooling.</p>
+        </div>
+        <div class="dc-about-block">
+          <h4>What I Like Building</h4>
+          <p>i enjoy reverse engineering, anti-tamper work, authentication flows, and low-level systems that need both strong protection and clean implementation.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="dc-card">
+      <div class="dc-skills-title">Technical Skills <span class="dc-card-tag">stack</span></div>
+      <div class="dc-skills-wrap">
+        <div class="dc-skill"><span class="dc-skill-dot" style="background:#e76f00"></span> Luau</div>
+        <div class="dc-skill"><span class="dc-skill-dot" style="background:#f16529"></span> HTML</div>
+        <div class="dc-skill"><span class="dc-skill-dot" style="background:#264de4"></span> CSS</div>
+        <div class="dc-skill"><span class="dc-skill-dot" style="background:#f7df1e"></span> JavaScript</div>
+        <div class="dc-skill"><span class="dc-skill-dot" style="background:#f34f29"></span> Git</div>
+        <div class="dc-skill"><span class="dc-skill-dot" style="background:#ccc"></span> GitHub</div>
+        <div class="dc-skill"><span class="dc-skill-dot" style="background:#3178c6"></span> TypeScript</div>
+        <div class="dc-skill"><span class="dc-skill-dot" style="background:#3776ab"></span> Python</div>
+        <div class="dc-skill"><span class="dc-skill-dot" style="background:#00684a"></span> MongoDB</div>
+        <div class="dc-skill"><span class="dc-skill-dot" style="background:#61dafb"></span> React</div>
+        <div class="dc-skill"><span class="dc-skill-dot" style="background:#68a063"></span> Node.js</div>
+      </div>
+    </div>
+
+    <div class="dc-card">
+      <div class="dc-card-title">What I Do</div>
+      <div class="dc-features">
+        <div class="dc-feat">
+          <h4>Security &amp; Scripting</h4>
+          <p>i specialize in building anti-tamper protections, whitelisting platforms, and secure script
+          distribution systems.</p>
+        </div>
+        <div class="dc-feat">
+          <h4>Luau Development</h4>
+          <p>years of experience writing performant, secure, and clean luau code for production use cases.
+          from obfuscation to authentication.</p>
+        </div>
+        <div class="dc-feat">
+          <h4>Reverse Engineering</h4>
+          <p>digging into binaries, bytecode, and protection mechanisms to build better defenses
+          and smarter tooling.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- Experience -->
+<section class="experience" id="experience">
+  <div class="experience-head">
+    <div>
+      <div class="experience-kicker">experience / timeline</div>
+      <h2 class="experience-title">things i've been building</h2>
+    </div>
+    <p class="experience-copy">a quick snapshot of the kind of work i focus on: secure scripting, luau systems, reverse engineering practice, and web tools with a polished interface.</p>
+  </div>
+
+  <div class="experience-shell">
+    <aside class="experience-console">
+      <div class="experience-console-top">
+        <span>build_status</span>
+        <span>active</span>
+      </div>
+      <div class="experience-meter">
+        <div class="meter-ring"><span>4+</span></div>
+        <div class="meter-label">years coding</div>
+        <div class="experience-mini-list">
+          <span><b>core</b> luau</span>
+          <span><b>focus</b> security</span>
+          <span><b>mode</b> shipping</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="experience-timeline">
+      <article class="experience-card">
+        <div class="experience-meta">
+          <span>current</span>
+          <span>jovlab</span>
+        </div>
+        <h3>Security Tool Builder</h3>
+        <p>building anti-tamper ideas, whitelist systems, script distribution flows, and interfaces for tools that need to feel fast, controlled, and reliable.</p>
+        <div class="experience-tags">
+          <span>anti-tamper</span>
+          <span>auth</span>
+          <span>tooling</span>
+        </div>
+      </article>
+
+      <article class="experience-card">
+        <div class="experience-meta">
+          <span>main stack</span>
+          <span>luau</span>
+        </div>
+        <h3>Luau Developer</h3>
+        <p>writing practical luau code for scripting workflows, automation, protection logic, and systems that need clean structure under pressure.</p>
+        <div class="experience-tags">
+          <span>luau</span>
+          <span>scripting</span>
+          <span>systems</span>
+        </div>
+      </article>
+
+      <article class="experience-card">
+        <div class="experience-meta">
+          <span>research</span>
+          <span>reverse engineering</span>
+        </div>
+        <h3>Reverse Engineering Learner</h3>
+        <p>studying how protection systems work, how they fail, and how that knowledge can become stronger defenses and smarter development decisions.</p>
+        <div class="experience-tags">
+          <span>analysis</span>
+          <span>defense</span>
+          <span>low-level</span>
+        </div>
+      </article>
+
+      <article class="experience-card">
+        <div class="experience-meta">
+          <span>frontend</span>
+          <span>web</span>
+        </div>
+        <h3>Interface Designer</h3>
+        <p>creating dark, sharp, interactive web pages with motion details, clean sections, responsive layouts, and a style that matches the project identity.</p>
+        <div class="experience-tags">
+          <span>html</span>
+          <span>css</span>
+          <span>javascript</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section class="projects" id="projects">
+  <div class="projects-head">
+    <div>
+      <div class="projects-kicker">projects / showcase</div>
+      <h2 class="projects-title">selected builds</h2>
+    </div>
+    <p class="projects-copy">a few project directions that match the way i like to work: sharp interfaces, security-minded systems, and tools that feel clean to use.</p>
+  </div>
+
+  <div class="projects-grid">
+    <article class="project-card featured">
+      <div class="project-top">
+        <div class="project-status">AI crypto analysis</div>
+        <h3>CoinSight AI</h3>
+        <p>an AI-powered crypto research assistant that helps investors analyze market signals, compare assets, review trends, and make more informed trading decisions.</p>
+        <p class="project-credit">Credits to Daniel and Deco for helping make the website run smoothly.</p>
+      </div>
+      <div class="project-bottom">
+        <div class="project-tags">
+          <span>ai</span>
+          <span>crypto</span>
+          <span>analytics</span>
+          <span>investing</span>
+        </div>
+        <a class="project-link" id="coinsight-open" href="#">
+          view project
+          <svg viewBox="0 0 24 24"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zM5 5h6v2H7v10h10v-4h2v6H5V5z"/></svg>
+        </a>
+      </div>
+      <div class="project-index">01</div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-top">
+        <div class="project-status">realtime reporting</div>
+        <h3>Tukang Lapor</h3>
+        <p>a realtime reporting website that helps Bapak Prakarya receive problem reports instantly, organize incoming issues, and respond faster when something needs attention.</p>
+      </div>
+      <div class="project-bottom">
+        <div class="project-tags">
+          <span>website</span>
+          <span>realtime</span>
+          <span>reports</span>
+        </div>
+        <a class="project-link" href="#" target="_blank" rel="noopener noreferrer">
+          view project
+          <svg viewBox="0 0 24 24"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zM5 5h6v2H7v10h10v-4h2v6H5V5z"/></svg>
+        </a>
+      </div>
+      <div class="project-index">02</div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-top">
+        <div class="project-status">working</div>
+        <h3>Financial Tracker</h3>
+        <p>an AI finance assistant that helps users track spending, understand cash flow, monitor financial habits, and stay more organized with their money.</p>
+      </div>
+      <div class="project-bottom">
+        <div class="project-tags">
+          <span>ai</span>
+          <span>finance</span>
+          <span>tracking</span>
+        </div>
+        <a class="project-link" href="#" target="_blank" rel="noopener noreferrer">
+          view project
+          <svg viewBox="0 0 24 24"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zM5 5h6v2H7v10h10v-4h2v6H5V5z"/></svg>
+        </a>
+      </div>
+      <div class="project-index">03</div>
+    </article>
+  </div>
+</section>
+
+<div class="project-modal" id="coinsight-modal" aria-hidden="true">
+  <div class="project-modal-backdrop" data-coinsight-close></div>
+  <div class="project-modal-card" role="dialog" aria-modal="true" aria-labelledby="coinsight-modal-title">
+    <button class="project-modal-close" type="button" data-coinsight-close aria-label="Close CoinSight options">
+      <svg viewBox="0 0 24 24"><path d="M18.3 5.71 12 12l6.3 6.29-1.41 1.41L10.59 13.41 4.29 19.7 2.88 18.29 9.17 12 2.88 5.71 4.29 4.3l6.3 6.29 6.3-6.29 1.41 1.41z"/></svg>
+    </button>
+    <div class="project-modal-kicker">CoinSight AI</div>
+    <h3 id="coinsight-modal-title">Where do you want to open it?</h3>
+    <p>Choose the live website or explore the source code on GitHub.</p>
+    <div class="project-modal-actions">
+      <a href="https://coinsight.web.id" target="_blank" rel="noopener noreferrer">
+        Website
+        <svg viewBox="0 0 24 24"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3zM5 5h6v2H7v10h10v-4h2v6H5V5z"/></svg>
+      </a>
+      <a href="https://github.com/Jopancio/Coinsight-AI" target="_blank" rel="noopener noreferrer">
+        GitHub
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="scroll-indicator">
+  <span>SCROLL DOWN</span>
+  <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 5v14M5 12l7 7 7-7"/>
+  </svg>
+</div>
+
+<!-- Scan icon -->
+<div class="scan-icon">
+  <svg viewBox="0 0 50 50">
+    <path d="M5 15 L5 5 L15 5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M35 5 L45 5 L45 15" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M45 35 L45 45 L35 45" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M15 45 L5 45 L5 35" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="20" cy="25" r="2" fill="#ccc" stroke="none"/>
+    <circle cx="30" cy="25" r="2" fill="#ccc" stroke="none"/>
+  </svg>
+</div>
+
+<!-- View others -->
+<a href="#" class="view-others">
+  <svg viewBox="0 0 24 24">
+    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+  </svg>
+  View others
+</a>
+
+<!-- Music player -->
+<div class="music-player" id="music-player">
+  <div class="player-top">
+    <div class="player-mini-bar">
+      <div class="mini-album"></div>
+      <span class="mini-track-name">Flocc</span>
+    </div>
+    <button class="player-top-btn" id="btn-expand" title="Expand">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+      </svg>
+    </button>
+    <button class="player-top-btn" id="btn-minimize" title="Minimize">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M5 12h14"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="player-body">
+    <div class="player-content">
+      <div class="album-art"></div>
+      <div class="track-info">
+        <div class="track-name">Flocc</div>
+        <div class="track-artist">SmokeDope2016</div>
+      </div>
+    </div>
+
+    <div class="progress-row">
+      <span class="progress-time">0:42</span>
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <span class="progress-time">2:45</span>
+    </div>
+
+    <div class="player-controls">
+      <div class="controls-left">
+        <!-- Play -->
+        <button class="ctrl-btn" title="Play">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <!-- Shuffle -->
+        <button class="ctrl-btn" title="Shuffle">
+          <svg viewBox="0 0 24 24"><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/></svg>
+        </button>
+        <!-- Repeat -->
+        <button class="ctrl-btn" title="Repeat">
+          <svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+        </button>
+        <!-- Queue -->
+        <button class="ctrl-btn" title="Queue">
+          <svg viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+        </button>
+      </div>
+      <div class="volume-area">
+        <!-- Volume icon -->
+        <button class="ctrl-btn" title="Volume">
+          <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+        </button>
+        <div class="volume-bar">
+          <div class="volume-fill"></div>
+          <div class="volume-knob"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /main-wrapper -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
